@@ -1,56 +1,85 @@
-# Práctica 1: Unit Testing
+# Proyectos de Aula LPCL
 
-## Objetivo General
-
-El objetivo de esta práctica es realizar pruebas unitarias en un proyecto, desarrollando casos de prueba para garantizar la correcta funcionalidad del código. Esto incluye tanto pruebas normales como extraordinarias y de error.
+**Integrantes:** Moises Herrera y Mateo Molina
 
 ---
 
 ## Condiciones Generales
 
-- **Equipos**: 
-  - Equipos de 2 estudiantes.
-  - En caso de que el número de matriculados sea impar, se permite un equipo de 3.
-  
-- **Asesoría**:
-  - Cada equipo debe contactar a un experto para que los ayude a entender el problema y redactar los casos de prueba.
-
-- **Variables adicionales**:
-  - Aunque se proporcionan variables mínimas de entrada y salida para cada tema, el equipo puede agregar más si consideran que son relevantes durante la investigación.
+- Equipos de 2 estudiantes. Solo en caso de que los matriculados en el curso sean impares, se permite un equipo de 3.
+- Cada equipo debe contactar a un experto que les ayude a entender el problema y redactar los casos de prueba. La entrevista con el experto debe ser grabada en video o audio.
+- De la entrevista con el experto, el equipo debe identificar las variables de entrada y salida, así como las fórmulas que deben utilizar para realizar los cálculos.
+- Usando las variables y las fórmulas suministradas por el experto, deberán construir un libro de Excel con al menos 10 casos de prueba del problema.
+- El equipo debe tener un repositorio en GitHub donde hacen la entrega. En la plataforma UVirtual deben suministrar la URL del proyecto.
 
 ---
 
-## Entregas Requeridas
+## Entregas
 
-1. **Pruebas Unitarias Construidas**:
-   - Mínimo **20 casos de prueba** por toda la funcionalidad.
-   - Al menos **10 casos de prueba** por funcionalidad.
-   - **3 casos normales**.
-   - **3 casos extraordinarios**.
-   - **4 casos de error**.
-
-2. **Interfaz de Usuario Tipo Consola**:
-   - Funcionalidad que permita pasar las pruebas unitarias.
-
-3. **Interfaz de Usuario Gráfica**:
-   - Desarrollo de una interfaz gráfica para el proyecto.
-
-4. **Interfaz de Usuario Web Service**:
-   - Creación de una interfaz de usuario para web services.
-
-5. **Interfaz de Usuario Web**:
-   - Desarrollo de una interfaz web para el proyecto.
+- Pruebas unitarias construidas  
+- Interfaz de usuario tipo consola  
+- Interfaz de usuario gráfica  
+- Base de Datos  
+- Interfaz de usuario web  
 
 ---
 
-## Repositorio
+## Calculadora de Ahorro Programado
 
-- El equipo debe crear un repositorio en GitHub o plataforma similar.
-- Deben proporcionar la **URL del repositorio** en la entrega.
-- **Ambos integrantes** deben entregar la URL. Si solo uno la sube, no se considerará entregado al otro miembro.
+Se requiere una aplicación que permita conocer el valor que debe ahorrar mensualmente una persona que suscriba un ahorro programado al final del periodo de tiempo pactado, para alcanzar una meta de ahorro.  
+La aplicación permite además realizar abonos extras en el tiempo y cantidad que el ahorrador desee.
 
 ---
 
-## Recursos
+## Solución del problema
 
-- Los temas del proyecto y los grupos asignados se pueden consultar en el archivo `cheat-sheets/projects.md` del repositorio de [ProfeBill/cheat-sheets](https://github.com/ProfeBill/cheat-sheets).
+### 1. Perfil del entrevistado
+
+- **Nombre:** Adriana Gonzalez Mejia  
+- **Edad:** 43 años  
+- **Ocupación:** Analista de crédito  
+- **Experiencia:** Lleva años ahorrando mensualmente para metas como vacaciones, estudio o gustos personales. No es financiera, pero sí muy organizada con sus metas.  
+- **Link de la entrevista:** [Ver entrevista](https://drive.google.com/file/d/1dJfGLr8ntzFC1T09SV6Yael1X12K_EQU/view?usp=sharing)
+
+---
+
+### 2. Identificación de variables y fórmulas
+
+#### Variables de entrada:
+
+- Meta final de ahorro (`meta`)
+- Duración del ahorro en meses (`meses`)
+- Abonos extra (mes, valor) (`abonos`)
+
+#### Variables de salida:
+
+- Valor mensual a ahorrar  
+- Total ahorrado a la fecha  
+- Saldo restante por ahorrar  
+
+---
+
+### 3. Fórmulas del cálculo de ahorro
+
+```plaintext
+ahorro_mensual = meta / meses
+
+abonos_extra = abono_1 + abono_2 + abono_3 + ... + abono_n
+
+total_ahorrado = (ahorro_mensual * meses_cumplidos) + abonos_extra
+
+saldo = meta - total_ahorrado
+
+nuevo_ahorro_mensual = saldo / (meses - meses_cumplidos)
+
+```
+
+---
+
+## 4. Casos de prueba en hoja de cálculo
+
+Se construyó un archivo en Google Sheets que contiene al menos 10 casos de prueba aplicando las fórmulas y variables identificadas.  
+Este archivo permite visualizar diferentes escenarios de ahorro programado, incluyendo abonos extra, seguimiento del total ahorrado y ajuste del valor mensual en caso de cambios.
+
+**Enlace al documento:** [Ver hoja de cálculo](https://docs.google.com/spreadsheets/d/1LvZmssoXyPGCphXX650ifGW0w8BjKPEnsEZLR5gztD4/edit?usp=sharing)
+

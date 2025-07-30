@@ -4,26 +4,6 @@
 
 ---
 
-## Condiciones Generales
-
-- Equipos de 2 estudiantes. Solo en caso de que los matriculados en el curso sean impares, se permite un equipo de 3.
-- Cada equipo debe contactar a un experto que les ayude a entender el problema y redactar los casos de prueba. La entrevista con el experto debe ser grabada en video o audio.
-- De la entrevista con el experto, el equipo debe identificar las variables de entrada y salida, así como las fórmulas que deben utilizar para realizar los cálculos.
-- Usando las variables y las fórmulas suministradas por el experto, deberán construir un libro de Excel con al menos 10 casos de prueba del problema.
-- El equipo debe tener un repositorio en GitHub donde hacen la entrega. En la plataforma UVirtual deben suministrar la URL del proyecto.
-
----
-
-## Entregas
-
-- Pruebas unitarias construidas  
-- Interfaz de usuario tipo consola  
-- Interfaz de usuario gráfica  
-- Base de Datos  
-- Interfaz de usuario web  
-
----
-
 ## Calculadora de Ahorro Programado
 
 Se requiere una aplicación que permita conocer el valor que debe ahorrar mensualmente una persona que suscriba un ahorro programado al final del periodo de tiempo pactado, para alcanzar una meta de ahorro.  

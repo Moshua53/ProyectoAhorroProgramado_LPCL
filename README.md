@@ -54,8 +54,3 @@ El objetivo de esta práctica es realizar pruebas unitarias en un proyecto, desa
 ## Recursos
 
 - Los temas del proyecto y los grupos asignados se pueden consultar en el archivo `cheat-sheets/projects.md` del repositorio de [ProfeBill/cheat-sheets](https://github.com/ProfeBill/cheat-sheets).
-
-## Calculadora de Ahorro Programado
-
-La **Calculadora de Ahorro Programado** es una aplicación diseñada para ayudar a los usuarios a calcular el monto que deben ahorrar mensualmente para alcanzar una meta de ahorro al final de un periodo pactado. Además de los ahorros mensuales, la aplicación permite realizar **abonos extras** en cualquier momento y por la cantidad que el usuario desee, lo que brinda flexibilidad para ajustar el ahorro según sus necesidades.
-

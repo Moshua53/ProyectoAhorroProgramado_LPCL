@@ -42,15 +42,15 @@ La aplicación permite además realizar abonos extras en el tiempo y cantidad qu
 ### 3. Fórmulas del cálculo de ahorro
 
 ```plaintext
-ahorro_mensual = meta / meses
+ahorro_mensual = meta / meses (`oficial`)
 
-abonos_extra = abono_1 + abono_2 + abono_3 + ... + abono_n
+abonos_extra = abono_1 + abono_2 + abono_3 + ... + abono_n (`no oficial`)
 
-total_ahorrado = (ahorro_mensual * meses_cumplidos) + abonos_extra
+total_ahorrado = (ahorro_mensual * meses_cumplidos) + abonos_extra (`no oficial`)
 
-saldo = meta - total_ahorrado
+saldo = meta - total_ahorrado (`no oficial`)
 
-nuevo_ahorro_mensual = saldo / (meses - meses_cumplidos)
+nuevo_ahorro_mensual = saldo / (meses - meses_cumplidos) (`no oficial`)
 
 ```
 

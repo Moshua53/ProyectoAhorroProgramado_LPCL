@@ -71,3 +71,15 @@ total_ahorrado = (ahorro_mensual * meses_cumplidos) + abonos_extra
 saldo = meta - total_ahorrado
 
 nuevo_ahorro_mensual = saldo / (meses - meses_cumplidos)
+
+```
+
+---
+
+## 4. Casos de prueba en hoja de cálculo
+
+Se construyó un archivo en Google Sheets que contiene al menos 10 casos de prueba aplicando las fórmulas y variables identificadas.  
+Este archivo permite visualizar diferentes escenarios de ahorro programado, incluyendo abonos extra, seguimiento del total ahorrado y ajuste del valor mensual en caso de cambios.
+
+**Enlace al documento:** [Ver hoja de cálculo](https://docs.google.com/spreadsheets/d/1LvZmssoXyPGCphXX650ifGW0w8BjKPEnsEZLR5gztD4/edit?usp=sharing)
+

@@ -59,5 +59,47 @@ class Test_ahorro_Mensual(unittest.TestCase):
     #Prueba
         self.assertAlmostEqual(ahorro_mensual_esperado,ahorro_mensual, 2)
 
+# caso extraordinario 1
+    def prueba_caso_extraordinario_1():
+        
+    # Entradas
+        meta = 1_000_000
+        meses = 10
+        abonos_extra = 200_000
+    # Probar salidas
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+    # Salidas
+        ahorro_mensual_esperado = 300_000
+    #Prueba
+        self.assertAlmostEqual(ahorro_mensual_esperado,ahorro_mensual, 2)
+
+# caso extraordinario 2
+    def prueba_caso_extraordinario_2():
+        
+    # Entradas
+        meta = 2_000_000
+        meses = 20
+        abonos_extra = 300_000
+    # Probar salidas
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+    # Salidas
+        ahorro_mensual_esperado = 400_000
+    #Prueba
+        self.assertAlmostEqual(ahorro_mensual_esperado,ahorro_mensual, 2)
+
+# caso extraordinario 3
+    def prueba_caso_extraordinario_3():
+        
+    # Entradas
+        meta = 900_000
+        meses = 9
+        abonos_extra = 400_000
+    # Probar salidas
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+    # Salidas
+        ahorro_mensual_esperado = 500_000
+    #Prueba
+        self.assertAlmostEqual(ahorro_mensual_esperado,ahorro_mensual, 2)
+
 if __name__ == '__main__':
     unittest.main()

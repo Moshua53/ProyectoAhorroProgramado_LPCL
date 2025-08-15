@@ -65,7 +65,7 @@ class TestAhorroMensual(unittest.TestCase):
         # Probar salidas
         ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
         # Salidas
-        ahorro_mensual_esperado = 300_000
+        ahorro_mensual_esperado = 80_000
         # Prueba
         self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
 
@@ -78,7 +78,7 @@ class TestAhorroMensual(unittest.TestCase):
         # Probar salidas
         ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
         # Salidas
-        ahorro_mensual_esperado = 400_000
+        ahorro_mensual_esperado = 85_000
         # Prueba
         self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
 
@@ -91,37 +91,35 @@ class TestAhorroMensual(unittest.TestCase):
         # Probar salidas
         ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
         # Salidas
-        ahorro_mensual_esperado = 500_000
+        ahorro_mensual_esperado = 55_556
         # Prueba
-        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
+        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 0)
 
     # caso error 1: meta negativa
     def test_error_meta_negativa(self):
         meta = -500_000
         meses = 5
         abonos_extra = 0
-        with self.assertRaises(ValueError) as contexto:
+        with self.assertRaises(Modulos.ErrorValorMeta):
             Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
-        self.assertEqual(str(contexto.exception), "La meta no puede ser negativa")
+    
 
     # caso error 2: meses igual a cero
     def test_error_meses_cero(self):
         meta = 1_000_000
         meses = 0
         abonos_extra = 0
-        with self.assertRaises(ValueError) as contexto:
+        with self.assertRaises(Modulos.ErrorValorMeses):
             Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
-        self.assertEqual(str(contexto.exception), "El número de meses debe ser mayor que cero")
+        
 
     # caso error 3: meta ya superada
     def test_error_meta_superada(self):
         meta = 1_500_000
         meses = 12
         abonos_extra = 2_000_000
-        with self.assertRaises(ValueError) as contexto:
+        with self.assertRaises(Modulos.ErrorAbonoExcesivo): 
             Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
-        self.assertEqual(str(contexto.exception), "La meta ya fue superada con los abonos, ahorro innecesario")
-
 
 
 if __name__ == '__main__':

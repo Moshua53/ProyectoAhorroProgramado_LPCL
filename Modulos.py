@@ -1,4 +1,4 @@
-class ErrprValorAhorro( Exception ):
+class ErrorValorAhorro( Exception ):
     """ Valor de la meta debe ser mayor a cero """
 
     def __init__ (self, *args):
@@ -20,4 +20,5 @@ def calcular_ahorro_mesual(meta: int, meses: int, abono: int) -> float:
         raise ValueError("La meta ya fue superada con los abonos, ahorro innecesario")
 
     return (meta / meses) + abono
+
 

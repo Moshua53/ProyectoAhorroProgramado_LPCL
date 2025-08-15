@@ -1,13 +1,13 @@
 import Modulos
 
-Try:
+try:
   # Datos de entrada
   meta = float(input("Ingrese la meta del ahorro: "))
   meses = float(input("Ingrese los meses del ahorro: "))
   abono_extra = float(input("Ingrese los abonos extras: "))
 
   # Realizar procesos
-  ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+  ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
 
   # Mostrar datos de salida
   print(f"El valor del ahorro es: {ahorro_mensual}")

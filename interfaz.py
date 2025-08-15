@@ -1,7 +1,6 @@
 import Modulos
 
 Try:
-
   # Datos de entrada
   meta = float(input("Ingrese la meta del ahorro: "))
   meses = float(input("Ingrese los meses del ahorro: "))
@@ -15,5 +14,6 @@ Try:
 
 except ValueError as error_entrada:
   print("Por favor verifique los datos ingresados.")
+
 except Exception as e:
   print("No se puede calcular el ahorro " + str(e))

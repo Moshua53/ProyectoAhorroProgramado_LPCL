@@ -2,7 +2,7 @@ import unittest
 import Modulos
 
 
-class Test_ahorro_Mensual(unittest.TestCase):
+class TestAhorroMensual(unittest.TestCase):
 
     # caso normal 1
     def test_normal_1(self):
@@ -94,6 +94,34 @@ class Test_ahorro_Mensual(unittest.TestCase):
         ahorro_mensual_esperado = 500_000
         # Prueba
         self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
+
+    # caso error 1: meta negativa
+    def test_error_meta_negativa(self):
+        meta = -500_000
+        meses = 5
+        abonos_extra = 0
+        with self.assertRaises(ValueError) as contexto:
+            Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        self.assertEqual(str(contexto.exception), "La meta no puede ser negativa")
+
+    # caso error 2: meses igual a cero
+    def test_error_meses_cero(self):
+        meta = 1_000_000
+        meses = 0
+        abonos_extra = 0
+        with self.assertRaises(ValueError) as contexto:
+            Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        self.assertEqual(str(contexto.exception), "El número de meses debe ser mayor que cero")
+
+    # caso error 3: meta ya superada
+    def test_error_meta_superada(self):
+        meta = 1_500_000
+        meses = 12
+        abonos_extra = 2_000_000
+        with self.assertRaises(ValueError) as contexto:
+            Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        self.assertEqual(str(contexto.exception), "La meta ya fue superada con los abonos, ahorro innecesario")
+
 
 
 if __name__ == '__main__':

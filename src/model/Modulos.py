@@ -1,18 +1,18 @@
 class ErrorValorMeta( Exception ):
     """ Valor de la meta debe ser mayor a cero """
 
-    def __init__ (self, *args):
+    def __init__ (self,):
         super().__init__("ERROR: El valor de la meta debe ser mayor que cero")
                          
 class ErrorValorMeses( Exception ):
     """Valor de los meses debe ser mayor que cero """
 
-    def __init__ (self, *args):
+    def __init__ (self,):
         super().__init__("ERROR: el valor de los meses debe ser mayor que cero")
 
 class ErrorAbonoExcesivo( Exception ):
     """La meta ya fue superada con los abonos, ahorro innecesario"""
-    def __init__ (self, *args):
+    def __init__ (self,):
         super().__init__("ERROR: El valor de la meta debe ser mayor que cero")
 
 def calcular_ahorro_mesual(meta: int, meses: int, abono_extra: int) -> float:

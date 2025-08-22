@@ -15,7 +15,7 @@ class ErrorAbonoExcesivo( Exception ):
     def __init__ (self, *args):
         super().__init__("ERROR: El valor de la meta debe ser mayor que cero")
 
-def calcular_ahorro_mesual(meta: int, meses: int, abono: int) -> float:
+def calcular_ahorro_mesual(meta: int, meses: int, abono_extra: int) -> float:
     """ Permite calcular el ahorro mensual que se debe realizar para llegar a la meta del ahorro programado """
 
     if meta < 0:
@@ -24,7 +24,7 @@ def calcular_ahorro_mesual(meta: int, meses: int, abono: int) -> float:
     if meses <= 0:
         raise ErrorValorMeses()
 
-    if (meta / meses) + abono > meta:
+    if (meta / meses) + abono_extra > meta:
         raise ErrorAbonoExcesivo()
 
-    return (meta - abono)/ meses
+    return (meta - abono_extra)/ meses

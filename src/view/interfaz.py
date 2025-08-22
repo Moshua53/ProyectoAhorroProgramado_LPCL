@@ -8,7 +8,7 @@ try:
   # Datos de entrada
   meta = float(input("Ingrese la meta del ahorro: "))
   meses = float(input("Ingrese los meses del ahorro: "))
-  abono_extra = float(input("Ingrese los abonos extras: "))
+  abono_extra = float(input("Ingrese el abono extra: "))
 
   # Realizar procesos
   ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
@@ -19,5 +19,5 @@ try:
 except ValueError as error_entrada:
   print("Por favor verifique los datos ingresados.")
 
-except Exception as e:
-  print("No se puede calcular el ahorro " + str(e))
+except Exception as error:
+  print("No se puede calcular el ahorro " + str(error))

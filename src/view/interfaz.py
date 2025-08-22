@@ -1,4 +1,8 @@
-import Modulos
+
+import sys
+
+sys.path.append("src")
+from model import Modulos
 
 try:
   # Datos de entrada
@@ -10,7 +14,7 @@ try:
   ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
 
   # Mostrar datos de salida
-  print(f"El valor del ahorro es: {ahorro_mensual}")
+  print(f"El valor del ahorro mensual es: {ahorro_mensual}")
 
 except ValueError as error_entrada:
   print("Por favor verifique los datos ingresados.")

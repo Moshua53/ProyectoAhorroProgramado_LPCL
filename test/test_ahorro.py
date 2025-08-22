@@ -6,7 +6,7 @@ sys.path.append("src")
 from model import Modulos
 
 class TestAhorroMensual(unittest.TestCase):
-
+    rendondeo_cifras_decimales=2
     # caso normal 1
     def test_normal_1(self):
         # Entradas
@@ -18,7 +18,7 @@ class TestAhorroMensual(unittest.TestCase):
         # Salidas
         ahorro_mensual_esperado = 100_000
         # Prueba
-        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
+        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, rendondeo_cifras_decimales)
 
     # caso normal 2
     def test_normal_2(self):
@@ -31,7 +31,7 @@ class TestAhorroMensual(unittest.TestCase):
         # Salidas
         ahorro_mensual_esperado = 100_000
         # Prueba
-        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
+        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, rendondeo_cifras_decimales)
 
     # caso normal 3
     def test_normal_3(self):
@@ -44,7 +44,7 @@ class TestAhorroMensual(unittest.TestCase):
         # Salidas
         ahorro_mensual_esperado = 100_000
         # Prueba
-        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
+        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, rendondeo_cifras_decimales)
 
     # caso normal 4
     def test_normal_4(self):
@@ -57,7 +57,7 @@ class TestAhorroMensual(unittest.TestCase):
         # Salidas
         ahorro_mensual_esperado = 200_000
         # Prueba
-        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
+        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, rendondeo_cifras_decimales)
 
     # caso extraordinario 1
     def test_caso_extraordinario_1(self):
@@ -70,7 +70,7 @@ class TestAhorroMensual(unittest.TestCase):
         # Salidas
         ahorro_mensual_esperado = 80_000
         # Prueba
-        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
+        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, rendondeo_cifras_decimales)
 
     # caso extraordinario 2
     def test_caso_extraordinario_2(self):
@@ -83,7 +83,7 @@ class TestAhorroMensual(unittest.TestCase):
         # Salidas
         ahorro_mensual_esperado = 85_000
         # Prueba
-        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, 2)
+        self.assertAlmostEqual(ahorro_mensual_esperado, ahorro_mensual, rendondeo_cifras_decimales)
 
     # caso extraordinario 3
     def test_caso_extraordinario_3(self):

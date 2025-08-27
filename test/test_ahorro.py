@@ -1,4 +1,3 @@
-
 import unittest
 import sys
 
@@ -12,9 +11,9 @@ class TestAhorroMensual(unittest.TestCase):
         # Entradas
         meta = 1_200_000
         meses = 12
-        abonos_extra = 0
+        abono_extra = 0
         # Probar salidas
-        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
         # Salidas
         ahorro_mensual_esperado = 100_000
         # Prueba
@@ -25,9 +24,9 @@ class TestAhorroMensual(unittest.TestCase):
         # Entradas
         meta = 2_400_000
         meses = 24
-        abonos_extra = 0
+        abono_extra = 0
         # Probar salidas
-        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
         # Salidas
         ahorro_mensual_esperado = 100_000
         # Prueba
@@ -38,9 +37,9 @@ class TestAhorroMensual(unittest.TestCase):
         # Entradas
         meta = 600_000
         meses = 6
-        abonos_extra = 0
+        abono_extra = 0
         # Probar salidas
-        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
         # Salidas
         ahorro_mensual_esperado = 100_000
         # Prueba
@@ -51,9 +50,9 @@ class TestAhorroMensual(unittest.TestCase):
         # Entradas
         meta = 3_000_000
         meses = 15
-        abonos_extra = 0
+        abono_extra = 0
         # Probar salidas
-        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
         # Salidas
         ahorro_mensual_esperado = 200_000
         # Prueba
@@ -64,9 +63,9 @@ class TestAhorroMensual(unittest.TestCase):
         # Entradas
         meta = 1_000_000
         meses = 10
-        abonos_extra = 200_000
+        abono_extra = 200_000
         # Probar salidas
-        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
         # Salidas
         ahorro_mensual_esperado = 80_000
         # Prueba
@@ -77,9 +76,9 @@ class TestAhorroMensual(unittest.TestCase):
         # Entradas
         meta = 2_000_000
         meses = 20
-        abonos_extra = 300_000
+        abono_extra = 300_000
         # Probar salidas
-        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
         # Salidas
         ahorro_mensual_esperado = 85_000
         # Prueba
@@ -90,9 +89,9 @@ class TestAhorroMensual(unittest.TestCase):
         # Entradas
         meta = 900_000
         meses = 9
-        abonos_extra = 400_000
+        abono_extra = 400_000
         # Probar salidas
-        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+        ahorro_mensual = Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
         # Salidas
         ahorro_mensual_esperado = 55_556
         # Prueba
@@ -102,27 +101,27 @@ class TestAhorroMensual(unittest.TestCase):
     def test_error_meta_negativa(self):
         meta = -500_000
         meses = 5
-        abonos_extra = 0
+        abono_extra = 0
         with self.assertRaises(Modulos.ErrorValorMeta):
-            Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+            Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
     
 
     # caso error 2: meses igual a cero
     def test_error_meses_cero(self):
         meta = 1_000_000
         meses = 0
-        abonos_extra = 0
+        abono_extra = 0
         with self.assertRaises(Modulos.ErrorValorMeses):
-            Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+            Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
         
 
     # caso error 3: meta ya superada
     def test_error_meta_superada(self):
         meta = 1_500_000
         meses = 12
-        abonos_extra = 2_000_000
+        abono_extra = 2_000_000
         with self.assertRaises(Modulos.ErrorAbonoExcesivo): 
-            Modulos.calcular_ahorro_mesual(meta, meses, abonos_extra)
+            Modulos.calcular_ahorro_mesual(meta, meses, abono_extra)
 
 
 if __name__ == '__main__':

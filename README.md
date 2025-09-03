@@ -75,3 +75,16 @@ Esta hoja permitió validar tanto el comportamiento del cálculo como el lanzami
 
 **Enlace al documento:** [Ver hoja de cálculo](https://docs.google.com/spreadsheets/d/1LvZmssoXyPGCphXX650ifGW0w8BjKPEnsEZLR5gztD4/edit?usp=sharing)
 
+---
+
+## 5. Ejecucion de programa ( vista en consola )
+
+Para correr la aplicacion en consola:
+```bash
+python src/view/ProyectoAhorroProgramado_LPCL.py
+```
+
+Ejecucion de las pruebas:
+```bash
+python test/ProyectoAhorroProgramado_LPCL.py
+```

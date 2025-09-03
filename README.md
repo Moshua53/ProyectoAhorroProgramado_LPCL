@@ -26,37 +26,52 @@ La aplicación permite además realizar abonos extras en el tiempo y cantidad qu
 ### 2. Identificación de variables y fórmulas
 
 #### Variables de entrada:
-
-- Meta final de ahorro (`meta`)
-- Duración del ahorro en meses (`meses`)
-- Abonos extra (mes, valor) (`abonos`)
+- meta: float  
+- meses: int  
+- abono_extra: float  
+- interes_mensual: float  
 
 #### Variables de salida:
-
-- Valor mensual a ahorrar  
-- Total ahorrado a la fecha  
-- Saldo restante por ahorrar  
+- ahorro_mensual: float  
+- total_depositado: float  
+- saldo_final: float  
+- ganancia_intereses: float  
 
 ---
 
-### 3. Fórmulas del cálculo de ahorro
+## 3. Fórmulas utilizadas
 
-ahorro_mensual = meta / meses **(oficial)**
+### Cálculo sin interés (interes_mensual = 0)
 
-abonos_extra = abono_1 + abono_2 + abono_3 + ... + abono_n **(no oficial)**
+```python
+ahorro_mensual = (meta - abono_extra) / meses
+```
 
-total_ahorrado = (ahorro_mensual * meses_cumplidos) + abonos_extra **(no oficial)**
+### Cálculo con interés mensual compuesto (interes_mensual > 0)
 
-saldo = meta - total_ahorrado **(no oficial)**
+- Fórmula usada en el código Python:
+```python
+factor = ((1 + interes_mensual) ** meses - 1) / interes_mensual
+ahorro_mensual = (meta - abono_extra * (1 + interes_mensual) ** meses) / factor
+```
 
-nuevo_ahorro_mensual = saldo / (meses - meses_cumplidos) **(no oficial)**
+### Cálculo con interés mensual compuesto (interes_mensual > 0)
+
+- Fórmula equivalente en Excel:
+```python
+=PAGO(InteresMensual, Meses, 0, -(Meta - AbonoExtra * (1 + InteresMensual)^Meses))
+```
 
 ---
 
 ## 4. Casos de prueba en hoja de cálculo
 
-Se construyó un archivo en Google Sheets que contiene al menos 10 casos de prueba aplicando las fórmulas y variables identificadas.  
-Este archivo permite visualizar diferentes escenarios de ahorro programado, incluyendo abonos extra, seguimiento del total ahorrado y ajuste del valor mensual en caso de cambios.
+Se desarrolló una hoja de cálculo con 11 casos de prueba, organizados en tres secciones:
+- Casos normales (sin interés, sin abonos extra)
+- Casos extraordinarios (con abonos extra y/o interés)
+- Casos de error (meta negativa, tiempo igual a cero, meta superada)
+
+Esta hoja permitió validar tanto el comportamiento del cálculo como el lanzamiento de excepciones correctamente definidas en el código.
 
 **Enlace al documento:** [Ver hoja de cálculo](https://docs.google.com/spreadsheets/d/1LvZmssoXyPGCphXX650ifGW0w8BjKPEnsEZLR5gztD4/edit?usp=sharing)
 

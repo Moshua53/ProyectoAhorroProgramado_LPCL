@@ -12,7 +12,7 @@ try:
     interes_mensual = float(input("Ingrese la tasa de interés mensual (ej. 0.01 = 1%): "))
 
     ahorro_mensual = Modulos.calcular_ahorro_mensual(meta, meses, abono_extra, interes_mensual)
-    print(f"\n💰 El valor del ahorro mensual es: {ahorro_mensual:.2f}\n")
+    print(f"\nEl valor del ahorro mensual es: {ahorro_mensual:.2f}\n")
 
     saldo = 0
     total_depositado = 0
@@ -32,10 +32,10 @@ try:
         print(f"{mes:<5}{ahorro_mensual:<15.2f}{interes_ganado:<15.2f}{saldo:<15.2f}")
 
     ganancia_intereses = saldo - total_depositado
-    print("\n<-- Resumen final:")
-    print(f"--> Total depositado por el usuario: {total_depositado:.2f}")
-    print(f"--> Saldo final en la cuenta: {saldo:.2f}")
-    print(f"--> Ganancia generada por intereses: {ganancia_intereses:.2f}")
+    print("\n<- Resumen final:")
+    print(f"-> Total depositado por el usuario: {total_depositado:.2f}")
+    print(f"-> Saldo final en la cuenta: {saldo:.2f}")
+    print(f"-> Ganancia generada por intereses: {ganancia_intereses:.2f}")
 
 except ValueError:
     print("Por favor verifique los datos ingresados.")

@@ -86,5 +86,5 @@ py src/view/interfaz.py
 
 Ejecucion de las pruebas:
 ```bash
-python test/ProyectoAhorroProgramado_LPCL.py
+py test/test_ahorro.py
 ```

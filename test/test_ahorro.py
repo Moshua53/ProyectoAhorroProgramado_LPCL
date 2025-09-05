@@ -3,7 +3,7 @@ import unittest
 import sys
 
 sys.path.append("src")
-from src.model import Modulos
+from model import Modulos
 
 class TestAhorroMensual(unittest.TestCase):
     redondeo_cifras_decimales = 2

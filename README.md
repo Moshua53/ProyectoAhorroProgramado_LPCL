@@ -81,7 +81,7 @@ Esta hoja permitió validar tanto el comportamiento del cálculo como el lanzami
 
 Para correr la aplicacion en consola:
 ```bash
-python src/view/ProyectoAhorroProgramado_LPCL.py
+py src/view/interfaz.py
 ```
 
 Ejecucion de las pruebas:

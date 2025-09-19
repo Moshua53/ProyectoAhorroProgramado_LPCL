@@ -1,6 +1,6 @@
 # Proyectos de Aula LPCL
 
-**Integrantes:** Moises Herrera y Mateo Molina
+**Integrantes:** Esteban Arias y Juanita Legarda
 
 ---
 

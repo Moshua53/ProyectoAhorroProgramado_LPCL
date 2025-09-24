@@ -10,7 +10,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.gridlayout import GridLayout
 
 from model import Modulos
-
+from model.Modulos import ErrorValorMeta, ErrorValorMeses, ErrorAbonoExcesivo
 
 KV = """
 <RootUI>:
@@ -146,8 +146,14 @@ class RootUI(BoxLayout):
 
     def calcular(self):
         try:
-            meta = float(self.ids.meta_in.text or 0)
-            meses = int(self.ids.meses_in.text or 0)
+            # Validaciones básicas de campo vacío
+            if not self.ids.meta_in.text.strip():
+                raise ValueError("La meta es obligatoria y debe ser un número válido.")
+            if not self.ids.meses_in.text.strip():
+                raise ValueError("Los meses son obligatorios y deben ser un número válido.")
+
+            meta = float(self.ids.meta_in.text)
+            meses = int(self.ids.meses_in.text)
             abono = float(self.ids.abono_in.text or 0)
             interes = float(self.ids.interes_in.text or 0)
 
@@ -156,10 +162,16 @@ class RootUI(BoxLayout):
 
             self._poblar_tabla(meses, ahorro_mensual, interes)
 
-        except ValueError:
-            self.resultado_texto = "Error: Verifique los datos numéricos."
+        except ValueError as ve:
+            self.resultado_texto = f"Error de valor: {ve}"
+        except ErrorValorMeta as evm:
+            self.resultado_texto = str(evm)
+        except ErrorValorMeses as evmes:
+            self.resultado_texto = str(evmes)
+        except ErrorAbonoExcesivo as eae:
+            self.resultado_texto = str(eae)
         except Exception as e:
-            self.resultado_texto = f"Error: {e}"
+            self.resultado_texto = f"Error inesperado: {e}"
 
     def _crear_encabezados_tabla(self):
         tabla = self.ids.tabla
@@ -199,5 +211,3 @@ class CalculadoraAhorroApp(App):
 
 if __name__ == "__main__":
     CalculadoraAhorroApp().run()
-
-

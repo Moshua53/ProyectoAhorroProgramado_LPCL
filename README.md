@@ -88,3 +88,8 @@ Ejecucion de las pruebas:
 ```bash
 py test/test_ahorro.py
 ```
+## Ejecucion de programa (Kivy)
+para correr la aplicacion en GUI
+```bash
+py src/GUI/InterfazGUI.py
+```

@@ -77,7 +77,17 @@ Esta hoja permitió validar tanto el comportamiento del cálculo como el lanzami
 
 ---
 
-## 5. Ejecucion de programa ( vista en consola )
+
+## 5. Ejecucion de programa (Kivy)
+Para correr la aplicacion en GUI
+```bash
+py src/GUI/InterfazGUI.py
+```
+
+---
+
+
+## 6. Ejecucion de programa ( vista en consola )
 
 Para correr la aplicacion en consola:
 ```bash
@@ -87,9 +97,4 @@ py src/view/interfaz.py
 Ejecucion de las pruebas:
 ```bash
 py test/test_ahorro.py
-```
-## Ejecucion de programa (Kivy)
-para correr la aplicacion en GUI
-```bash
-py src/GUI/InterfazGUI.py
 ```

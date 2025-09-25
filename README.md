@@ -1,6 +1,6 @@
 # Proyectos de Aula LPCL
 
-**Integrantes:** Esteban Arias y Juanita Legarda
+**Integrantes:** Esteban Arias y Juanita Legarda.
 
 ---
 

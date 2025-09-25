@@ -146,7 +146,7 @@ class RootUI(BoxLayout):
 
     def calcular(self):
         try:
-            
+           
             if not self.ids.meta_in.text.strip():
                 raise ValueError("La meta es obligatoria y debe ser un número válido.")
             if not self.ids.meses_in.text.strip():
@@ -211,3 +211,4 @@ class CalculadoraAhorroApp(App):
 
 if __name__ == "__main__":
     CalculadoraAhorroApp().run()
+

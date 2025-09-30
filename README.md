@@ -87,7 +87,16 @@ py src/GUI/InterfazGUI.py
 ---
 
 
-## 6. Ejecucion de programa ( vista en consola )
+## 6. Ejecutable para Windows
+Para ejecutar la aplicacion compilada:
+```bash
+cd dist
+main.exe
+```
+
+---
+
+## 7. Ejecucion de programa ( vista en consola )
 
 Para correr la aplicacion en consola:
 ```bash

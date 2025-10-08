@@ -1,6 +1,6 @@
 # Proyectos de Aula LPCL
 
-**Integrantes:** Moises Herrera y Mateo Molina
+**Integrantes:** Esteban Arias y Juanita Legarda.
 
 ---
 
@@ -77,7 +77,26 @@ Esta hoja permitió validar tanto el comportamiento del cálculo como el lanzami
 
 ---
 
-## 5. Ejecucion de programa ( vista en consola )
+
+## 5. Ejecucion de programa (Kivy)
+Para correr la aplicacion en GUI
+```bash
+py src/GUI/InterfazGUI.py
+```
+
+---
+
+
+## 6. Ejecutable para Windows
+Para ejecutar la aplicacion compilada:
+```bash
+cd dist
+main.exe
+```
+
+---
+
+## 7. Ejecucion de programa ( vista en consola )
 
 Para correr la aplicacion en consola:
 ```bash

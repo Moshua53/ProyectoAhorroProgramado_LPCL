@@ -13,9 +13,16 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.metrics import dp
+from kivy.graphics import Color, Rectangle
 
 # --- Grafica ---
-from kivy_garden.graph import Graph, MeshLinePlot  
+try:
+    from kivy_garden.graph import Graph, MeshLinePlot
+    _GRAPH_AVAILABLE = True
+except Exception:  # ImportError u otros problemas de carga
+    Graph = None
+    MeshLinePlot = None
+    _GRAPH_AVAILABLE = False
 
 from model import Modulos
 from model.Modulos import ErrorValorMeta, ErrorValorMeses, ErrorAbonoExcesivo
@@ -34,7 +41,7 @@ KV = """
  
     # Título principal
     Label:
-        text: "💰 Calculadora de Ahorro Programado"
+        text: "Calculadora de Ahorro Programado"
         font_size: "24sp"
         bold: True
         color: [0.7, 0.9, 1, 1]
@@ -42,108 +49,81 @@ KV = """
         height: dp(50)
         halign: "center"
 
-    # Campos de entrada con mejor diseño
+    # Campos de entrada: textos arriba y inputs debajo
     BoxLayout:
         size_hint_y: None
-        height: dp(200)
+        height: dp(140)
         spacing: dp(15)
         padding: [dp(10), 0, dp(10), 0]
+        orientation: "vertical"
 
+        # Fila de títulos
         BoxLayout:
-            orientation: "vertical"
-            size_hint_x: 0.25
-            spacing: dp(5)
+            size_hint_y: None
+            height: dp(30)
+            spacing: dp(15)
             Label:
-                text: "🎯 Meta de Ahorro"
-                size_hint_y: None
-                height: dp(30)
-                font_size: "14sp"
-                bold: True
+                text: "Meta de Ahorro"
                 color: [0.8, 0.8, 0.9, 1]
+            Label:
+                text: "Meses"
+                color: [0.8, 0.8, 0.9, 1]
+            Label:
+                text: "Abono Extra"
+                color: [0.8, 0.8, 0.9, 1]
+            Label:
+                text: "Interés Mensual"
+                color: [0.8, 0.8, 0.9, 1]
+
+        # Fila de inputs (debajo de las palabras)
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: dp(15)
             TextInput:
                 id: meta_in
                 hint_text: "Ej: 1200000"
-                input_filter: "float"
                 multiline: False
-                size_hint_y: None
-                height: dp(50)
                 font_size: "16sp"
                 padding: [dp(10), dp(10), dp(10), dp(10)]
+                background_normal: ''
                 background_color: [0.3, 0.3, 0.3, 1]
                 foreground_color: [1, 1, 1, 1]
                 hint_text_color: [0.7, 0.7, 0.7, 1]
-
-        BoxLayout:
-            orientation: "vertical"
-            size_hint_x: 0.25
-            spacing: dp(5)
-            Label:
-                text: "📅 Meses"
-                size_hint_y: None
-                height: dp(30)
-                font_size: "14sp"
-                bold: True
-                color: [0.8, 0.8, 0.9, 1]
+                cursor_color: [1, 1, 1, 1]
             TextInput:
                 id: meses_in
                 hint_text: "Ej: 12"
-                input_filter: "int"
                 multiline: False
-                size_hint_y: None
-                height: dp(50)
                 font_size: "16sp"
                 padding: [dp(10), dp(10), dp(10), dp(10)]
+                background_normal: ''
                 background_color: [0.3, 0.3, 0.3, 1]
                 foreground_color: [1, 1, 1, 1]
                 hint_text_color: [0.7, 0.7, 0.7, 1]
-
-        BoxLayout:
-            orientation: "vertical"
-            size_hint_x: 0.25
-            spacing: dp(5)
-            Label:
-                text: "💵 Abono Extra"
-                size_hint_y: None
-                height: dp(30)
-                font_size: "14sp"
-                bold: True
-                color: [0.8, 0.8, 0.9, 1]
+                cursor_color: [1, 1, 1, 1]
             TextInput:
                 id: abono_in
                 hint_text: "Ej: 0"
-                input_filter: "float"
                 multiline: False
-                size_hint_y: None
-                height: dp(50)
                 font_size: "16sp"
                 padding: [dp(10), dp(10), dp(10), dp(10)]
+                background_normal: ''
                 background_color: [0.3, 0.3, 0.3, 1]
                 foreground_color: [1, 1, 1, 1]
                 hint_text_color: [0.7, 0.7, 0.7, 1]
-
-        BoxLayout:
-            orientation: "vertical"
-            size_hint_x: 0.25
-            spacing: dp(5)
-            Label:
-                text: "📈 Interés Mensual"
-                size_hint_y: None
-                height: dp(30)
-                font_size: "14sp"
-                bold: True
-                color: [0.8, 0.8, 0.9, 1]
+                cursor_color: [1, 1, 1, 1]
             TextInput:
                 id: interes_in
                 hint_text: "Ej: 0.01"
-                input_filter: "float"
                 multiline: False
-                size_hint_y: None
-                height: dp(50)
                 font_size: "16sp"
                 padding: [dp(10), dp(10), dp(10), dp(10)]
+                background_normal: ''
                 background_color: [0.3, 0.3, 0.3, 1]
                 foreground_color: [1, 1, 1, 1]
                 hint_text_color: [0.7, 0.7, 0.7, 1]
+                cursor_color: [1, 1, 1, 1]
 
     # Botones con mejor diseño
     BoxLayout:
@@ -152,14 +132,14 @@ KV = """
         spacing: dp(20)
         padding: [dp(50), dp(10), dp(50), dp(10)]
         Button:
-            text: "🧮 Calcular"
+            text: "Calcular"
             font_size: "18sp"
             bold: True
             background_color: [0.2, 0.6, 0.3, 1]
             color: [1, 1, 1, 1]
             on_release: root.calcular()
         Button:
-            text: "🗑️ Limpiar"
+            text: "Limpiar"
             font_size: "18sp"
             bold: True
             background_color: [0.6, 0.2, 0.2, 1]
@@ -187,7 +167,7 @@ KV = """
 
     # Tabla de resultados
     Label:
-        text: "📊 Evolución del Ahorro"
+        text: "Evolución del Ahorro"
         font_size: "18sp"
         bold: True
         color: [0.8, 0.8, 0.9, 1]
@@ -195,6 +175,7 @@ KV = """
         height: dp(40)
 
     ScrollView:
+        size_hint_y: 0.45
         do_scroll_x: False
         canvas.before:
             Color:
@@ -215,7 +196,7 @@ KV = """
     # Gráfica
     BoxLayout:
         id: grafico_box
-        size_hint_y: 0.4
+        size_hint_y: 0.35
         canvas.before:
             Color:
                 rgba: 0.2, 0.2, 0.25, 1
@@ -365,14 +346,29 @@ class CalculadoraScreen(Screen):
             ]
             
             for i, celda in enumerate(fila):
-                # Colores alternados para las filas
-                color = [0.3, 0.3, 0.35, 1] if mes % 2 == 0 else [0.25, 0.25, 0.3, 1]
+                # Colores alternados para las filas (fondo por celda)
+                bg_rgba = [0.3, 0.3, 0.35, 1] if mes % 2 == 0 else [0.25, 0.25, 0.3, 1]
+
+                cell_container = BoxLayout(orientation='vertical', size_hint_y=None, height=dp(35), padding=[dp(6), 0, dp(6), 0])
+                with cell_container.canvas.before:
+                    Color(rgba=bg_rgba)
+                    rect = Rectangle(pos=cell_container.pos, size=cell_container.size)
+                def _sync_rect_pos(instance, value):
+                    rect.pos = value
+                def _sync_rect_size(instance, value):
+                    rect.size = value
+                cell_container.bind(pos=_sync_rect_pos, size=_sync_rect_size)
+
                 label = Label(
                     text=celda,
                     font_size='12sp',
-                    color=[0.9, 0.9, 0.95, 1]
+                    color=[0.92, 0.92, 0.98, 1],
+                    halign='left',
+                    valign='middle'
                 )
-                self.ids.tabla.add_widget(label)
+                label.bind(size=lambda inst, val: setattr(inst, 'text_size', val))
+                cell_container.add_widget(label)
+                self.ids.tabla.add_widget(cell_container)
 
             # guardar para grafica
             self.data_points.append((mes, saldo))
@@ -382,6 +378,20 @@ class CalculadoraScreen(Screen):
 
     # --- Metodos para la grafica ---
     def _crear_grafico(self):
+        # Si la librería de gráficas no está disponible, mostrar aviso y no crear gráfica
+        if not _GRAPH_AVAILABLE:
+            aviso = Label(
+                text="La librería de gráficas no está instalada.\nInstala 'kivy_garden.graph' para ver la gráfica.",
+                color=[0.9, 0.9, 0.95, 1],
+                font_size='14sp',
+                halign='center',
+                valign='middle'
+            )
+            self.ids.grafico_box.add_widget(aviso)
+            self.grafico = None
+            self.plot = None
+            return
+
         grafico = Graph(
             xlabel="Mes",
             ylabel="Saldo",
@@ -406,15 +416,26 @@ class CalculadoraScreen(Screen):
     def _actualizar_grafico(self):
         if not self.data_points:
             return
+        if not getattr(self, 'plot', None) or not getattr(self, 'grafico', None):
+            return
         self.plot.points = self.data_points
         # ajustar limites
-        self.grafico.xmax = max(m for m, _ in self.data_points) + 1
-        self.grafico.ymax = max(s for _, s in self.data_points) * 1.1
+        try:
+            self.grafico.xmax = max(m for m, _ in self.data_points) + 1
+            self.grafico.ymax = max(s for _, s in self.data_points) * 1.1
+        except Exception:
+            # Si por cualquier razón la gráfica no acepta los valores, lo ignoramos
+            pass
 
     def _reset_grafico(self):
-        self.plot.points = []
-        self.grafico.xmax = 12
-        self.grafico.ymax = 10000
+        if getattr(self, 'plot', None):
+            self.plot.points = []
+        if getattr(self, 'grafico', None):
+            try:
+                self.grafico.xmax = 12
+                self.grafico.ymax = 10000
+            except Exception:
+                pass
 
 
 class RootUI(BoxLayout):

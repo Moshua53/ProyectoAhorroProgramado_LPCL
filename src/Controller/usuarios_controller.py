@@ -5,7 +5,7 @@ sys.path.append("src")
 import psycopg2
 import psycopg2.extras
 import SecretConfig
-
+from model.usuarios import Usuario
 class ControladorUsuarios:
     """CRUD para la tabla 'usuarios'.
     Esquema esperado (crear_usuarios.sql):
@@ -25,7 +25,20 @@ class ControladorUsuarios:
         port=SecretConfig.PGPORT,
         )
         return connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-
+    
+    @staticmethod
+    def insertar(usuario:Usuario) -> None:
+        cursor = ControladorUsuarios.obtener_cursor()
+        cursor.execute(
+            """
+            INSERT INTO usuarios (cedula, nombre, apellido, correo)
+            VALUES (%s, %s, %s, %s);
+            """,
+            (usuario.cedula, usuario.nombre, usuario.apellido, usuario.correo),
+        )
+        cursor.connection.commit()
+        cursor.close()
+    
     @staticmethod
     def listar(limit: None, offset: int = 0) -> list[dict]:
         cursor = ControladorUsuarios.obtener_cursor()

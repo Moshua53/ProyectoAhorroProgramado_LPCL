@@ -27,6 +27,17 @@ class ControladorUsuarios:
         return connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
     
     @staticmethod
+    def buscar_por_cedula(cedula: str) -> dict | None:
+        cursor = ControladorUsuarios.obtener_cursor()
+        cursor.execute(
+            "SELECT cedula, nombre, apellido, correo FROM usuarios WHERE cedula = %s;",
+            (cedula,)
+        )
+        row = cursor.fetchone()
+        cursor.close()
+        return dict(row) if row else None
+
+    @staticmethod
     def insertar(usuario:Usuario) -> None:
         cursor = ControladorUsuarios.obtener_cursor()
         cursor.execute(

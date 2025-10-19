@@ -1,22 +1,18 @@
-import sys
-from model import Modulos
 
+import sys
+from model import modulos
 
 def calcular_ahorro_consola():
-    """Interfaz de consola para calcular ahorro mensual y mostrar evolución."""
 
     try:
-        # Entrada de datos
         meta = float(input("\nIngrese la meta del ahorro: "))
         meses = int(input("Ingrese los meses del ahorro: "))
         abono_extra = float(input("Ingrese el abono extra: "))
         interes_mensual = float(input("Ingrese la tasa de interés mensual (ej. 0.01 = 1%): "))
 
-        # Cálculo del ahorro mensual
-        ahorro_mensual = Modulos.calcular_ahorro_mensual(meta, meses, abono_extra, interes_mensual)
+        ahorro_mensual = modulos.calcular_ahorro_mensual(meta, meses, abono_extra, interes_mensual)
         print(f"\nEl valor del ahorro mensual es: {ahorro_mensual:.2f}\n")
 
-        # Evolución del ahorro
         saldo = 0.0
         total_depositado = 0.0
 
@@ -25,6 +21,7 @@ def calcular_ahorro_consola():
         print("-" * 50)
 
         for mes in range(1, meses + 1):
+            
             saldo += ahorro_mensual
             total_depositado += ahorro_mensual
 
@@ -33,7 +30,6 @@ def calcular_ahorro_consola():
 
             print(f"{mes:<5}{ahorro_mensual:<15.2f}{interes_ganado:<15.2f}{saldo:<15.2f}")
 
-        # Resumen final
         ganancia_intereses = saldo - total_depositado
         print("\n<- Resumen final:")
         print(f"-> Total depositado por el usuario: {total_depositado:.2f}")
@@ -45,8 +41,5 @@ def calcular_ahorro_consola():
     except Exception as e:
         print(f"No se puede calcular el ahorro. Detalles: {e}")
 
-
 if __name__ == "__main__":
     calcular_ahorro_consola()
-
-

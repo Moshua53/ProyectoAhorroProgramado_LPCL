@@ -5,7 +5,6 @@ import psycopg2
 import psycopg2.extras
 import SecretConfig
 
-
 class ControladorAhorros:
 
     @staticmethod

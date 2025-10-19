@@ -24,8 +24,8 @@ except Exception:  # ImportError u otros problemas de carga
     MeshLinePlot = None
     _GRAPH_AVAILABLE = False
 
-from model import Modulos
-from model.Modulos import ErrorValorMeta, ErrorValorMeses, ErrorAbonoExcesivo
+from model import modulos
+from model.modulos import ErrorValorMeta, ErrorValorMeses, ErrorAbonoExcesivo
 
 KV = """
 <CalculadoraScreen>:
@@ -283,7 +283,7 @@ class CalculadoraScreen(Screen):
             abono = float(self.ids.abono_in.text or 0)
             interes = float(self.ids.interes_in.text or 0)
 
-            ahorro_mensual = Modulos.calcular_ahorro_mensual(meta, meses, abono, interes)
+            ahorro_mensual = modulos.calcular_ahorro_mensual(meta, meses, abono, interes)
             self.resultado_texto = f"💰 Ahorro mensual requerido: ${ahorro_mensual:,.2f}"
 
             self._poblar_tabla(meses, ahorro_mensual, interes)

@@ -9,4 +9,3 @@ from GUI.InterfazGUI import CalculadoraAhorroApp
 
 if __name__ == '__main__':
     CalculadoraAhorroApp().run()
-

@@ -1,3 +1,4 @@
+
 class ErrorValorMeta(Exception):
     """Excepción lanzada cuando la meta es menor o igual a cero."""
     def __init__(self):

@@ -107,3 +107,19 @@ Ejecucion de las pruebas:
 ```bash
 py test/test_ahorro.py
 ```
+
+---
+
+## 8. Prerrequisitos
+
+Instale el paquete psycopg2 con:
+
+```bash
+pip install psycopg2
+```
+
+Asegurese de tener una base de datos PostgreSQL y sus respectivos datos de acceso
+
+Copie el archivo SecretConfig-sample.py como SecretConfig.py y establezca en este archivo los datos de conexion a su base de datos.
+
+Antes de ejecutar la aplicaicón por primera vez, debe correr las pruebas unitarias, para que se creen las tablas en la base de datos
